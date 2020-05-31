@@ -26,5 +26,23 @@ namespace weathering
 		{
 			this.InitializeComponent();
 		}
+		public void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+		{
+			if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+			{
+				//Set the ItemsSource to be your filtered dataset
+				//sender.ItemsSource = dataset;
+			}
+		}
+		public void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args) 
+		{
+			
+		}
+		private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+		{
+			// Set sender.Text. You can use args.SelectedItem to build your text string.
+		}
+
+
 	}
 }

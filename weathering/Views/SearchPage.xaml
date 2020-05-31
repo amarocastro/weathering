@@ -26,6 +26,9 @@
 			<AutoSuggestBox x:Name="SearhBox" 
 			Grid.Row="0"
 			Margin="0,45,0,0"
-			Style="{StaticResource customAutoSuggestBox}"/>
+			Style="{StaticResource customAutoSuggestBox}"
+			TextChanged="AutoSuggestBox_TextChanged"
+			QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+			SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
 	</Grid>
 </Page>
