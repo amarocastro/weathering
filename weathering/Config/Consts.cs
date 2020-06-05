@@ -8,6 +8,6 @@ namespace weathering.Config
 {
 	public static class Consts
 	{
-		const string APIKEY_HERE = "RCbQ1q62PUeNAVkOD3VVsilBDMHmP4zcXkl94oLRU_s";
+		public const string APIKEY_HERE = "RCbQ1q62PUeNAVkOD3VVsilBDMHmP4zcXkl94oLRU_s";
 	}
 }

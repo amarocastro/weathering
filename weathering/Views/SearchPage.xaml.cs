@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using weathering.Helper.AutocompleteHereHelper;
+using weathering.Model;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,16 +25,23 @@ namespace weathering
 	/// </summary>
 	public sealed partial class SearchPage : Page
 	{
+		private AutocompleteHelper autocompleteHelper = new AutocompleteHelper();
+		public List<Item> suggestions = new List<Item>();
 		public SearchPage()
 		{
 			this.InitializeComponent();
 		}
-		public void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+		public async void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
 		{
 			if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
 			{
-				//Set the ItemsSource to be your filtered dataset
-				//sender.ItemsSource = dataset;
+				if (sender.Text.Length >= 2)
+				{
+					//Set the ItemsSource to be your filtered dataset
+					//sender.ItemsSource = dataset;
+					suggestions = await this.autocompleteHelper.GetSuggestions(sender.Text);
+					SuggestList.ItemsSource = suggestions;
+				}
 			}
 		}
 		public void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args) 

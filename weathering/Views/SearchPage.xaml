@@ -10,9 +10,9 @@
 	
 	<Grid>
 		<Grid.RowDefinitions>
-		<RowDefinition Height="Auto"/>
-		<RowDefinition Height="*"/>
-	</Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
 		<Grid.Resources>
 			<ResourceDictionary>
 				<ResourceDictionary.MergedDictionaries>
@@ -23,12 +23,27 @@
 			</ResourceDictionary>
 		</Grid.Resources>
 
-			<AutoSuggestBox x:Name="SearhBox" 
+		<AutoSuggestBox x:Name="SearhBox" 
 			Grid.Row="0"
 			Margin="0,45,0,0"
 			Style="{StaticResource customAutoSuggestBox}"
 			TextChanged="AutoSuggestBox_TextChanged"
 			QuerySubmitted="AutoSuggestBox_QuerySubmitted"
-			SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
+			SuggestionChosen="AutoSuggestBox_SuggestionChosen">
+
+		</AutoSuggestBox>
+		<ListView x:Name="SuggestList" Height="Auto" Margin="0,12,0,0" Grid.Row="1" ItemContainerStyle="{StaticResource BorderListItem}">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<!--<Border BorderThickness="0"
+							CornerRadius="2">-->
+						<Grid HorizontalAlignment="Stretch" Tag="{Binding locationId}" >
+							<TextBlock Text="{Binding address.city}"/>
+							<TextBlock Text="{Binding address.state}"/>
+						</Grid>
+					<!--</Border>-->
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
 	</Grid>
 </Page>

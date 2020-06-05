@@ -8,6 +8,6 @@ namespace weathering.Config
 {
 	public class AutocompleteAPIVars
 	{
-		string AUTOCOMPLETE_SEGGEST_HEREapi = "https://autocomplete.geocoder.ls.hereapi.com/6.2/suggest.json?apiKey={0}&query=";
+		public static string AUTOCOMPLETE_SUGGEST_HEREapi = "https://autocomplete.geocoder.ls.hereapi.com/6.2/suggest.json?apiKey={key}&query={text}";
 	}
 }

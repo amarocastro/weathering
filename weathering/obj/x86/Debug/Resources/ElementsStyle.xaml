@@ -212,5 +212,18 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+
+	<Style x:Key="BorderListItem" TargetType="ListViewItem">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="ListViewItem">
+					<Border x:Name="Border" BorderBrush="Transparent" CornerRadius="2">
+						
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
 </ResourceDictionary>
 
