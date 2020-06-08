@@ -110,8 +110,8 @@
 								  TintColor="#3e4142"
 								  TintOpacity="0.5"
 								  BackgroundSource="Backdrop"/>
-					<AcrylicBrush x:Key="AutoSuggestListItemBackground"
-								  TintColor="#292929"/>
+					<SolidColorBrush x:Key="AutoSuggestListItemBackground"
+								  Color="#292929"/>
 					<!--<SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="{ThemeResource SystemAccentColorLight2}" Opacity="0.5"/>-->
 					<!--<SolidColorBrush x:Key="ListViewItemBackgroundPointerOver" Color="#3e4142" Opacity="0.5"/>-->
 					<!--<SolidColorBrush x:Key="ListViewItemBackgroundPressed" Color="#3e4142" Opacity="0.9"/>-->

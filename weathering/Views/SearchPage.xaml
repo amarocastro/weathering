@@ -7,6 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="Transparent">
+	<Page.Resources>
+
+	</Page.Resources>
 	
 	<Grid>
 		<Grid.RowDefinitions>
@@ -32,16 +35,31 @@
 			SuggestionChosen="AutoSuggestBox_SuggestionChosen">
 
 		</AutoSuggestBox>
-		<ListView x:Name="SuggestList" Height="Auto" Margin="0,12,0,0" Grid.Row="1" ItemContainerStyle="{StaticResource BorderListItem}">
+		<ListView x:Name="SuggestList" Height="Auto" Margin="0,12,0,0" Grid.Row="1" ItemContainerStyle="{StaticResource ListViewItemStyleSearch}">
 			<ListView.ItemTemplate>
-				<DataTemplate>
-					<!--<Border BorderThickness="0"
-							CornerRadius="2">-->
-						<Grid HorizontalAlignment="Stretch" Tag="{Binding locationId}" >
-							<TextBlock Text="{Binding address.city}"/>
-							<TextBlock Text="{Binding address.state}"/>
-						</Grid>
-					<!--</Border>-->
+				<DataTemplate >
+					<Border BorderThickness="0">
+						<Grid Padding="0,12,0,12"
+									Margin="0"
+									CornerRadius="4"
+									Background="{ThemeResource AutoSuggestListItemBackground}">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto"/>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto"/>
+							</Grid.ColumnDefinitions>
+
+							<Button Grid.Column="0" VerticalAlignment="Center"
+										Margin="16,0,8,0">
+								<FontIcon Glyph="&#xE734;"/>
+							</Button>
+							<StackPanel Grid.Column="1"
+										Margin="8,0,0,0">
+								<TextBlock Text="{Binding address.city}" Margin="0"/>
+								<TextBlock Text="{Binding address.state}" Margin="0" FontSize="12"/>
+							</StackPanel>
+						</Grid>	
+					</Border>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
