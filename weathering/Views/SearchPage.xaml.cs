@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using weathering.Data;
 using weathering.Helper.AutocompleteHereHelper;
 using weathering.Model;
 using Windows.Foundation;
@@ -53,6 +54,16 @@ namespace weathering
 			// Set sender.Text. You can use args.SelectedItem to build your text string.
 		}
 
+		private void SuggestList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
 
+		}
+		private async void btn_FavButton_Click(Object sender, RoutedEventArgs args)
+		{
+			Button s = (Button)sender;
+			string btn_tag = s.Tag.ToString();
+			Item item = this.suggestions.Find(x => x.locationId == btn_tag);
+			await DataAccess.AddItemToFav(item);
+		}
 	}
 }

@@ -93,11 +93,12 @@
 								  TintColor="{ThemeResource MenuBackground}"
 								  TintOpacity="0.8"
 								  FallbackColor="#242426"/>
-					<AcrylicBrush x:Key="FrameBackground"
+					<!--<AcrylicBrush x:Key="FrameBackground"
 								  BackgroundSource="HostBackdrop"
-								  TintColor="#1A1B1C"
-								  TintOpacity="0.6"
-								  FallbackColor="#1A1B1C"/>
+								  TintColor="#1A1B1C"/>-->
+					<SolidColorBrush x:Key="FrameBackground" Color="#1A1B1C"/>
+					<!--TintOpacity="0.6"
+								  FallbackColor="#1A1B1C"-->
 					<AcrylicBrush x:Key="ListViewItemBackgroundPressed"
 								  BackgroundSource="Backdrop"
 								  TintColor="#3e4142"

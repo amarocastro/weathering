@@ -9,6 +9,7 @@
     Background="Transparent">
 	<Page.Resources>
 
+		
 	</Page.Resources>
 	
 	<Grid>
@@ -35,22 +36,32 @@
 			                                                  >
 
 		</AutoSuggestBox>
-		<ListView x:ConnectionId='3' x:Name="SuggestList" Height="Auto" Margin="0,12,0,0" Grid.Row="1" ItemContainerStyle="{StaticResource ListViewItemStyleSearch}">
+		<ListView x:ConnectionId='3' x:Name="SuggestList" Height="Auto" Margin="0,12,0,0" Grid.Row="1" 
+				  ItemContainerStyle="{StaticResource ListViewItemStyleSearch}" 
+				                                                 >
+
 			<ListView.ItemTemplate>
 				<DataTemplate >
 					<Border BorderThickness="0">
 						<Grid Padding="0,12,0,12"
 									Margin="0"
 									CornerRadius="4"
-									Background="{ThemeResource AutoSuggestListItemBackground}">
+									Background="{ThemeResource AutoSuggestListItemBackground}"
+								x:Name="SuggestionItem"
+								Tag="{Binding locationId}">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="Auto"/>
 								<ColumnDefinition Width="*" />
 								<ColumnDefinition Width="Auto"/>
 							</Grid.ColumnDefinitions>
 
-							<Button Grid.Column="0" VerticalAlignment="Center"
-										Margin="16,0,8,0">
+							<Button x:ConnectionId='6' x:Name="btn_FavButton"
+									Tag="{Binding locationId}"
+									                           
+									Grid.Column="0" VerticalAlignment="Center"
+									Margin="16,0,8,0"
+									Style="{StaticResource ButtonListItem}"
+									Background="{ThemeResource AutoSuggestListItemBackground}">
 								<FontIcon Glyph="&#xE734;"/>
 							</Button>
 							<StackPanel Grid.Column="1"
@@ -58,7 +69,7 @@
 								<TextBlock Text="{Binding address.city}" Margin="0"/>
 								<TextBlock Text="{Binding address.state}" Margin="0" FontSize="12"/>
 							</StackPanel>
-						</Grid>	
+						</Grid>
 					</Border>
 				</DataTemplate>
 			</ListView.ItemTemplate>

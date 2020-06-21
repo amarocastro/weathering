@@ -1,45 +1,27 @@
 ﻿<Page
-    x:Class="weathering.SearchPage"
+    x:Class="weathering.Views.FavouritePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:weathering"
+    xmlns:local="using:weathering.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="Transparent">
-	<Page.Resources>
 
-		
-	</Page.Resources>
-	
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*" />
-		</Grid.RowDefinitions>
+    <Grid>
 		<Grid.Resources>
 			<ResourceDictionary>
 				<ResourceDictionary.MergedDictionaries>
-					<ResourceDictionary Source="/Resources/Colors.xaml"/>
-					<ResourceDictionary Source="/Resources/ElementsStyle.xaml"/>
+					<ResourceDictionary Source="/Resources/Colors.xaml" />
+					<ResourceDictionary Source="/Resources/ElementsStyle.xaml" />
 				</ResourceDictionary.MergedDictionaries>
-
 			</ResourceDictionary>
 		</Grid.Resources>
-
-		<AutoSuggestBox x:Name="SearhBox" 
-			Grid.Row="0"
-			Margin="0,45,0,0"
-			Style="{StaticResource customAutoSuggestBox}"
-			TextChanged="AutoSuggestBox_TextChanged"
-			QuerySubmitted="AutoSuggestBox_QuerySubmitted"
-			SuggestionChosen="AutoSuggestBox_SuggestionChosen">
-
-		</AutoSuggestBox>
-		<ListView x:Name="SuggestList" Height="Auto" Margin="0,12,0,0" Grid.Row="1" 
-				  ItemContainerStyle="{StaticResource ListViewItemStyleSearch}" 
-				  SelectionChanged="SuggestList_SelectionChanged">
-
+			<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		
+		<ListView>
 			<ListView.ItemTemplate>
 				<DataTemplate >
 					<Border BorderThickness="0">
@@ -55,9 +37,8 @@
 								<ColumnDefinition Width="Auto"/>
 							</Grid.ColumnDefinitions>
 
-							<Button x:Name="btn_FavButton"
+							<Button x:Name="btn_AddFavItem"
 									Tag="{Binding locationId}"
-									Click="btn_FavButton_Click"
 									Grid.Column="0" VerticalAlignment="Center"
 									Margin="16,0,8,0"
 									Style="{StaticResource ButtonListItem}"
@@ -73,6 +54,7 @@
 					</Border>
 				</DataTemplate>
 			</ListView.ItemTemplate>
+			
 		</ListView>
-	</Grid>
+    </Grid>
 </Page>

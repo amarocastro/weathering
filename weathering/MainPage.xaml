@@ -88,7 +88,9 @@
 					<ListView Grid.Row="2"
 							 x:Name="ItemList"
 							 SelectionMode="Single"
-							 Background="Transparent">
+							 Background="Transparent"
+							  ItemClick="NavigateClick"
+							  IsItemClickEnabled="True">
 						<!--<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="states">
 								<VisualState x:Name="PointOver">
@@ -103,19 +105,19 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>-->
 						<ListViewItem x:Name="SearchItem" Style="{StaticResource MenuItemStyle}">
-							<StackPanel Orientation="Horizontal">
+							<StackPanel Orientation="Horizontal"  Tag="search">
 								<FontIcon Glyph="&#xF78B;"/>
 								<TextBlock Text="Search" FontFamily="Segoe UI" Margin="12,0,0,0" FontSize="14" />
 							</StackPanel>
 						</ListViewItem>
-						<ListViewItem Style="{StaticResource MenuItemStyle}" x:Name="CurrentLocItem">
-							<StackPanel Orientation="Horizontal">
+						<ListViewItem Style="{StaticResource MenuItemStyle}" x:Name="CurrentLocItem" >
+							<StackPanel Orientation="Horizontal" Tag="currentLoc">
 								<FontIcon Glyph="&#xE81D;"/>
 								<TextBlock Text="Plan" FontFamily="Segoe UI" Margin="12,0,0,0" FontSize="14" />
 							</StackPanel>
 						</ListViewItem>
-						<ListViewItem x:Name="FavLoctions" Style="{StaticResource MenuItemStyle}">
-							<StackPanel Orientation="Horizontal">
+						<ListViewItem x:Name="FavLoctions" Style="{StaticResource MenuItemStyle}" >
+							<StackPanel Orientation="Horizontal" Tag="favourites">
 								<FontIcon Glyph="&#xE728;"/>
 								<TextBlock Text="Favourite" FontFamily="Segoe UI" Margin="12,0,0,0" FontSize="14"/>
 							</StackPanel>

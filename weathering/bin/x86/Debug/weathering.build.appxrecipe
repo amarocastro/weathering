@@ -154,6 +154,9 @@
     <AppxPackagedFile Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\Resources\ElementsStyle.xbf">
       <PackagePath>Resources\ElementsStyle.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\Views\FavouritePage.xbf">
+      <PackagePath>Views\FavouritePage.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\Views\SearchPage.xbf">
       <PackagePath>Views\SearchPage.xbf</PackagePath>
     </AppxPackagedFile>
