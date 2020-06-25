@@ -48,7 +48,12 @@ namespace weathering.Data
 			result = await WriteJsonFileFromLocalFolfer<Item>(fileNameFav, newitem);
 			return result;
 		}
-		
+
+		public static async void DeleteItemFromFav(Item item)
+		{
+			var result = false;
+			result = await DeleteItemJsonFileFromLocalFolder(fileNameFav, item);
+		}
 		
 		//leer las entradas
 		private static async Task<T> ReadJsonFIleFromLocalFolder<T>(string filename)
@@ -72,6 +77,19 @@ namespace weathering.Data
 			{
 				contentData = new List<T>();
 				contentData.Add(newData);
+			}
+			content = JsonConvert.SerializeObject(contentData);
+			await FileIO.WriteTextAsync(file,content);
+			return true;
+		}
+		private static async Task<bool> DeleteItemJsonFileFromLocalFolder(string filename, Item data) 
+		{
+			StorageFile file = await localFolder.GetFileAsync(filename);
+			string content = await FileIO.ReadTextAsync(file);
+			List<Item> contentData = JsonConvert.DeserializeObject<List<Item>>(content);
+			if (content != null)
+			{
+				contentData.RemoveAt(contentData.FindIndex(x => x.locationId == data.locationId));
 			}
 			content = JsonConvert.SerializeObject(contentData);
 			await FileIO.WriteTextAsync(file,content);

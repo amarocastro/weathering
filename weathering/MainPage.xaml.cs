@@ -29,46 +29,46 @@ namespace weathering
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private NavigationViewItem _lastitem;
+
         public MainPage()
         {
             this.InitializeComponent();
             this.HideTitleBar();
             DataAccess.InitializeFile();
-            NavigateToView("SearchPage");
+
+           // NavigateToView("SearchPage");
         }
         private void HideTitleBar()
         {
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.BackgroundColor = Colors.Transparent;
-            titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.InactiveBackgroundColor = Colors.Transparent;
+            //ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            //titleBar.BackgroundColor = Colors.Transparent;
+            //titleBar.ButtonBackgroundColor = Colors.Transparent;
+            //titleBar.InactiveBackgroundColor = Colors.Transparent;
             CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-            coreTitleBar.ExtendViewIntoTitleBar = true;
+            coreTitleBar.ExtendViewIntoTitleBar = false;
             //Window.Current.SetTitleBar(titleBar);
         }
-        private void NavigateClick(object sender, ItemClickEventArgs e)
+        private void NavigationView_ItemClick(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            //StackPanel item = new StackPanel();
-            var obj = sender;
-            var item = e; 
-            switch (item.ToString())
+            var item = args.InvokedItemContainer as NavigationViewItem;
+            if (item == null || item == _lastitem)
             {
-                case "search":
-                    NavigateToView("SearchPage");
-                    break;
-                case "favourites":
-                    NavigateToView("FavouritePage");
-                    break;
+                return;
             }
+            var clickedView = item.Tag?.ToString() ?? "ContentSettingsView";
+            if (!(NavigateToView(clickedView))) return;
+            _lastitem = item;
         }
         private bool NavigateToView(string clickedView)
         {
-            var view = Assembly.GetExecutingAssembly().GetType($"weathering.{clickedView}");
+            var view = Assembly.GetExecutingAssembly().GetType($"weathering.Views.{clickedView}");
             if (string.IsNullOrWhiteSpace(clickedView) || view == null)
             {
                 return false;
             }
-            //if (clickedView == "SearchPage") { }
+            //if (clickedView == "SearchPage") { 
+            //}
             //if (clickedView == "FavouritePage")
             //{
             //}
