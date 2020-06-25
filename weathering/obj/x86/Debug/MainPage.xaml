@@ -44,7 +44,7 @@
 		</Grid.Resources>
 
 
-		<!--<SplitView 
+		<SplitView x:ConnectionId='2' 
 			x:Name="NavViewCustom"
 			OpenPaneLength="250"
 			IsPaneOpen="True"
@@ -52,7 +52,7 @@
 
 			<VisualStateManager.VisualStateGroups>
 				<VisualStateGroup>
-					<VisualState x:Name="Large">
+					<VisualState x:ConnectionId='3' x:Name="Large">
 						<VisualState.StateTriggers>
 							<AdaptiveTrigger MinWindowWidth="800" />
 						</VisualState.StateTriggers>
@@ -61,7 +61,7 @@
 							<Setter Target="NavViewCustom.IsPaneOpen" Value="True"/>
 						</VisualState.Setters>
 					</VisualState>
-					<VisualState x:Name="Small">
+					<VisualState x:ConnectionId='4' x:Name="Small">
 						<VisualState.StateTriggers>
 							<AdaptiveTrigger MinWindowWidth="0"/>
 						</VisualState.StateTriggers>
@@ -74,7 +74,7 @@
 			</VisualStateManager.VisualStateGroups>
 
 			<SplitView.Pane>
-				<Grid x:Name="NavViewMenu"
+				<Grid x:ConnectionId='5' x:Name="NavViewMenu"
 					  VerticalAlignment="Stretch"
 					  HorizontalAlignment="Stretch"
 					  Background="{ThemeResource PaneBackGround}">
@@ -83,16 +83,15 @@
 						<RowDefinition Height="Auto"/>
 						<RowDefinition Height="*"/>
 					</Grid.RowDefinitions>
-					<TextBlock x:Name="AppName" Margin="19,13,0,0">BeWeather</TextBlock>
+					<TextBlock x:ConnectionId='6' x:Name="AppName" Margin="19,13,0,0">BeWeather</TextBlock>
 
-					<ListView Grid.Row="2"
+					<ListView x:ConnectionId='7' Grid.Row="2"
 							 x:Name="ItemList"
 							 SelectionMode="Single"
 							 Background="Transparent"
-							  ItemClick="NavigateClick"
+							                           
 							  IsItemClickEnabled="True">
-						-->
-		<!--<VisualStateManager.VisualStateGroups>
+						<!--<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="states">
 								<VisualState x:Name="PointOver">
 									<VisualState.Setters>
@@ -105,20 +104,19 @@
 								
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>-->
-		<!--
-						<ListViewItem x:Name="SearchItem" Style="{StaticResource MenuItemStyle}">
+						<ListViewItem x:ConnectionId='8' x:Name="SearchItem" Style="{StaticResource MenuItemStyle}">
 							<StackPanel Orientation="Horizontal"  Tag="search">
 								<FontIcon Glyph="&#xF78B;"/>
 								<TextBlock Text="Search" FontFamily="Segoe UI" Margin="12,0,0,0" FontSize="14" />
 							</StackPanel>
 						</ListViewItem>
-						<ListViewItem Style="{StaticResource MenuItemStyle}" x:Name="CurrentLocItem" >
+						<ListViewItem x:ConnectionId='9' Style="{StaticResource MenuItemStyle}" x:Name="CurrentLocItem" >
 							<StackPanel Orientation="Horizontal" Tag="currentLoc">
 								<FontIcon Glyph="&#xE81D;"/>
 								<TextBlock Text="Plan" FontFamily="Segoe UI" Margin="12,0,0,0" FontSize="14" />
 							</StackPanel>
 						</ListViewItem>
-						<ListViewItem x:Name="FavLoctions" Style="{StaticResource MenuItemStyle}" >
+						<ListViewItem x:ConnectionId='10' x:Name="FavLoctions" Style="{StaticResource MenuItemStyle}" >
 							<StackPanel Orientation="Horizontal" Tag="favourites">
 								<FontIcon Glyph="&#xE728;"/>
 								<TextBlock Text="Favourite" FontFamily="Segoe UI" Margin="12,0,0,0" FontSize="14"/>
@@ -129,7 +127,7 @@
 				</Grid>
 			</SplitView.Pane>
 			<SplitView.Content>
-				<Frame x:Name="ContentFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+				<Frame x:ConnectionId='11' x:Name="ContentFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                    Background="{ThemeResource FrameBackground}">
 
 					<Frame.ContentTransitions>
@@ -139,27 +137,7 @@
 					</Frame.ContentTransitions>
 				</Frame>
 			</SplitView.Content>
-		</SplitView>-->
-
-		<NavigationView x:ConnectionId='2' PaneDisplayMode="Left"
-						IsBackButtonVisible="Collapsed"
-						                                      >
-			<NavigationView.MenuItems>
-				<NavigationViewItem Icon="Find" Content="Search" Tag="SearchPage" />
-				<NavigationViewItem Icon="MapPin" Content="Locations" Tag="LocationsPage"/>
-				<NavigationViewItem Icon="List" Content="Favourites" Tag="FavouritePage"/>
-			</NavigationView.MenuItems>
-			<Frame x:ConnectionId='3' x:Name="ContentFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                   >
-
-				<Frame.ContentTransitions>
-					<TransitionCollection>
-						<NavigationThemeTransition/>
-					</TransitionCollection>
-				</Frame.ContentTransitions>
-			</Frame>
-
-		</NavigationView>
+		</SplitView>
 	</Grid>
 
 </Page>

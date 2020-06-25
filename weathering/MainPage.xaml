@@ -44,7 +44,7 @@
 		</Grid.Resources>
 
 
-		<!--<SplitView 
+		<SplitView 
 			x:Name="NavViewCustom"
 			OpenPaneLength="250"
 			IsPaneOpen="True"
@@ -91,8 +91,7 @@
 							 Background="Transparent"
 							  ItemClick="NavigateClick"
 							  IsItemClickEnabled="True">
-						-->
-		<!--<VisualStateManager.VisualStateGroups>
+						<!--<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="states">
 								<VisualState x:Name="PointOver">
 									<VisualState.Setters>
@@ -105,7 +104,6 @@
 								
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>-->
-		<!--
 						<ListViewItem x:Name="SearchItem" Style="{StaticResource MenuItemStyle}">
 							<StackPanel Orientation="Horizontal"  Tag="search">
 								<FontIcon Glyph="&#xF78B;"/>
@@ -139,28 +137,7 @@
 					</Frame.ContentTransitions>
 				</Frame>
 			</SplitView.Content>
-		</SplitView>-->
-
-		<NavigationView PaneDisplayMode="Left"
-						IsBackButtonVisible="Collapsed"
-						ItemInvoked="NavigationView_ItemClick">
-			<NavigationView.MenuItems>
-				<NavigationViewItem Icon="Find" Content="Search" Tag="SearchPage" />
-				<NavigationViewItem Icon="MapPin" Content="Locations" Tag="LocationsPage"/>
-				<NavigationViewItem Icon="List" Content="Favourites" Tag="FavouritePage"/>
-			</NavigationView.MenuItems>
-			<Frame x:Name="ContentFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-				   ScrollViewer.VerticalScrollBarVisibility="Visible"
-				   ScrollViewer.VerticalScrollMode="Enabled">
-
-				<Frame.ContentTransitions>
-					<TransitionCollection>
-						<NavigationThemeTransition/>
-					</TransitionCollection>
-				</Frame.ContentTransitions>
-			</Frame>
-
-		</NavigationView>
+		</SplitView>
 	</Grid>
 
 </Page>

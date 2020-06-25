@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-06-22T11:16:47.354</Modified>
+      <Modified>2020-06-21T22:17:03.499</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\weathering.exe">
       <PackagePath>entrypoint\weathering.exe</PackagePath>
-      <Modified>2020-06-22T11:16:44.587</Modified>
+      <Modified>2020-06-21T22:16:58.333</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\amaro\.nuget\packages\colorcode.core\2.0.6\lib\netstandard1.4\ColorCode.Core.dll">
       <PackagePath>ColorCode.Core.dll</PackagePath>
@@ -186,31 +186,31 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\weathering.xr.xml">
       <PackagePath>weathering.xr.xml</PackagePath>
-      <Modified>2020-06-22T11:08:20.719</Modified>
+      <Modified>2020-06-21T22:14:32.252</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-06-22T11:16:44.337</Modified>
+      <Modified>2020-06-21T22:16:58.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-06-22T11:16:44.338</Modified>
+      <Modified>2020-06-21T22:16:58.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\Resources\Colors.xbf">
       <PackagePath>Resources\Colors.xbf</PackagePath>
-      <Modified>2020-06-22T11:16:44.280</Modified>
+      <Modified>2020-06-21T22:16:58.055</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\Resources\ElementsStyle.xbf">
       <PackagePath>Resources\ElementsStyle.xbf</PackagePath>
-      <Modified>2020-06-22T11:16:44.316</Modified>
+      <Modified>2020-06-21T22:16:58.091</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\Views\FavouritePage.xbf">
       <PackagePath>Views\FavouritePage.xbf</PackagePath>
-      <Modified>2020-06-22T11:16:44.338</Modified>
+      <Modified>2020-06-21T22:16:58.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\Views\SearchPage.xbf">
       <PackagePath>Views\SearchPage.xbf</PackagePath>
-      <Modified>2020-06-22T11:16:44.338</Modified>
+      <Modified>2020-06-21T22:16:58.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -218,11 +218,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-06-21T22:48:14.845</Modified>
+      <Modified>2020-06-21T22:17:00.025</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\amaro\source\repos\weathering\weathering\bin\x86\Debug\Core\weathering.exe">
       <PackagePath>weathering.exe</PackagePath>
-      <Modified>2020-06-22T11:16:47.346</Modified>
+      <Modified>2020-06-21T22:17:03.492</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
