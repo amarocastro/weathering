@@ -121,12 +121,16 @@
     </Compile>
     <Compile Include="Config\AutocompleteAPIVars.cs" />
     <Compile Include="Config\Consts.cs" />
+    <Compile Include="Config\HereWeather\HereWeatherVars.cs" />
     <Compile Include="Data\DataAccess.cs" />
     <Compile Include="Helper\ApiConnector.cs" />
     <Compile Include="Helper\AutocompleteHereHelper\AutocompleteHelper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\CurrentWeatherInterface.cs" />
+    <Compile Include="Model\DailyWeatherInterface.cs" />
+    <Compile Include="Model\HereWeather\Observation.cs" />
     <Compile Include="Model\SearchHereModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\FavouritePage.xaml.cs">

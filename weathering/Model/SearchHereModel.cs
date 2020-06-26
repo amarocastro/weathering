@@ -16,6 +16,8 @@ namespace weathering.Model
 	{
 		public Address address { get; set; }
 		public string locationId { get; set; }
+		public decimal lat { get; set; }
+		public decimal lng { get; set; }
 		public string matchlevel { get; set; }
 	}
 	public class Address 
