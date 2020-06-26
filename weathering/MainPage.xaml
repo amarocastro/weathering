@@ -43,8 +43,24 @@
 			</ResourceDictionary>
 		</Grid.Resources>
 
+		<NavigationView ItemInvoked="NavigationView_OnItemInvoked"
+						IsBackButtonVisible="Collapsed">
+			<NavigationView.MenuItems>
+				<NavigationViewItem Icon="Find" Content="Search" Tag="SearchPage"/>
+				<NavigationViewItem Icon="MapPin" Content="Plan" Tag="LocationPage"/>
+				<NavigationViewItem Icon="List" Content="Favourites" Tag="FavouritePage"/>
+			</NavigationView.MenuItems>
+			<Frame x:Name="ContentFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                   Background="Transparent">
 
-		<SplitView 
+				<Frame.ContentTransitions>
+					<TransitionCollection>
+						<NavigationThemeTransition/>
+					</TransitionCollection>
+				</Frame.ContentTransitions>
+			</Frame>
+		</NavigationView>
+		<!--<SplitView 
 			x:Name="NavViewCustom"
 			OpenPaneLength="250"
 			IsPaneOpen="True"
@@ -71,9 +87,9 @@
 						</VisualState.Setters>
 					</VisualState>
 				</VisualStateGroup>
-			</VisualStateManager.VisualStateGroups>
+			</VisualStateManager.VisualStateGroups>-->
 
-			<SplitView.Pane>
+	<!--<SplitView.Pane>
 				<Grid x:Name="NavViewMenu"
 					  VerticalAlignment="Stretch"
 					  HorizontalAlignment="Stretch"
@@ -91,7 +107,7 @@
 							 Background="Transparent"
 							  ItemClick="NavigateClick"
 							  IsItemClickEnabled="True">
-						<!--<VisualStateManager.VisualStateGroups>
+						--><!--<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="states">
 								<VisualState x:Name="PointOver">
 									<VisualState.Setters>
@@ -103,7 +119,7 @@
 								</VisualState>
 								
 							</VisualStateGroup>
-						</VisualStateManager.VisualStateGroups>-->
+						</VisualStateManager.VisualStateGroups>--><!--
 						<ListViewItem x:Name="SearchItem" Style="{StaticResource MenuItemStyle}">
 							<StackPanel Orientation="Horizontal"  Tag="search">
 								<FontIcon Glyph="&#xF78B;"/>
@@ -137,7 +153,7 @@
 					</Frame.ContentTransitions>
 				</Frame>
 			</SplitView.Content>
-		</SplitView>
+		</SplitView>-->		
 	</Grid>
 
 </Page>

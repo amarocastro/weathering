@@ -21,7 +21,7 @@
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
 		
-		<ListView>
+		<ListView x:Name="FavouriteList">
 			<ListView.ItemTemplate>
 				<DataTemplate >
 					<Border BorderThickness="0">
@@ -39,11 +39,12 @@
 
 							<Button x:Name="btn_AddFavItem"
 									Tag="{Binding locationId}"
+									Click="btn_DeleteBTN_Click"
 									Grid.Column="0" VerticalAlignment="Center"
 									Margin="16,0,8,0"
 									Style="{StaticResource ButtonListItem}"
 									Background="{ThemeResource AutoSuggestListItemBackground}">
-								<FontIcon Glyph="&#xE734;"/>
+								<FontIcon Glyph="&#xE74D;"/>
 							</Button>
 							<StackPanel Grid.Column="1"
 										Margin="8,0,0,0">

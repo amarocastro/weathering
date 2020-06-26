@@ -12,6 +12,7 @@ using Windows.Devices.Geolocation;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Microsoft.Toolkit.Uwp.Helpers;
+using Windows.UI.Xaml.Controls.Maps;
 
 namespace weathering.Data
 {
@@ -48,7 +49,11 @@ namespace weathering.Data
 			result = await WriteJsonFileFromLocalFolfer<Item>(fileNameFav, newitem);
 			return result;
 		}
-		
+
+		public static async Task<bool> DeleteFromList(Item item)
+		{
+			return await DeleteItemFromFavList(fileNameFav, item);
+		}
 		
 		//leer las entradas
 		private static async Task<T> ReadJsonFIleFromLocalFolder<T>(string filename)
@@ -75,6 +80,20 @@ namespace weathering.Data
 			}
 			content = JsonConvert.SerializeObject(contentData);
 			await FileIO.WriteTextAsync(file,content);
+			return true;
+		}
+
+		private static async Task<bool> DeleteItemFromFavList(string filename, Item item)
+		{
+			StorageFile file = await localFolder.GetFileAsync(filename);
+			string content = await FileIO.ReadTextAsync(file);
+			List<Item> contentData = JsonConvert.DeserializeObject<List<Item>>(content);
+			if (content != null)
+			{
+				contentData.RemoveAt(contentData.FindIndex(x => x.locationId == item.locationId));
+			}
+			content = JsonConvert.SerializeObject(contentData);
+			await FileIO.WriteTextAsync(file, content);
 			return true;
 		}
 	}

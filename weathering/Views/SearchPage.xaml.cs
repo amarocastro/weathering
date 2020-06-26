@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using weathering.Data;
+using weathering;
 using weathering.Helper.AutocompleteHereHelper;
 using weathering.Model;
 using Windows.Foundation;
@@ -19,7 +20,7 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace weathering
+namespace weathering.Views
 {
 	/// <summary>
 	/// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -41,6 +42,7 @@ namespace weathering
 					//Set the ItemsSource to be your filtered dataset
 					//sender.ItemsSource = dataset;
 					suggestions = await this.autocompleteHelper.GetSuggestions(sender.Text);
+					
 					SuggestList.ItemsSource = suggestions;
 				}
 			}
