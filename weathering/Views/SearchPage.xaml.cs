@@ -65,6 +65,11 @@ namespace weathering.Views
 			Button s = (Button)sender;
 			string btn_tag = s.Tag.ToString();
 			Item item = this.suggestions.Find(x => x.locationId == btn_tag);
+			this.AddToFavs(item.locationId);
+		}
+		private async void AddToFavs(string loc_ID)
+		{
+			//AQUI HAY QUE BUSCAR LAS COORDENADAS DEL ITEM QUE SE VA A GUARDAR//
 			await DataAccess.AddItemToFav(item);
 		}
 	}
