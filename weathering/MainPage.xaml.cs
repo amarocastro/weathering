@@ -35,6 +35,7 @@ namespace weathering
         {
             this.InitializeComponent();
             //this.HideTitleBar();
+
             DataAccess.InitializeFile();
         }
         private void HideTitleBar()

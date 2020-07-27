@@ -60,17 +60,18 @@ namespace weathering.Views
 		{
 
 		}
-		private async void btn_FavButton_Click(Object sender, RoutedEventArgs args)
+		private void btn_FavButton_Click(Object sender, RoutedEventArgs args)
 		{
 			Button s = (Button)sender;
 			string btn_tag = s.Tag.ToString();
-			Item item = this.suggestions.Find(x => x.locationId == btn_tag);
-			this.AddToFavs(item.locationId);
+			Item item = this.suggestions.Find(x => x.id == btn_tag);
+			this.AddToFavs(item.id);
 		}
 		private async void AddToFavs(string loc_ID)
 		{
 			//AQUI HAY QUE BUSCAR LAS COORDENADAS DEL ITEM QUE SE VA A GUARDAR//
-			await DataAccess.AddItemToFav(item);
+			LookUp lookUp = await this.autocompleteHelper.GetLocationByID(loc_ID);
+			await DataAccess.AddItemToFav(lookUp);
 		}
 	}
 }

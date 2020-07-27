@@ -15,8 +15,10 @@ namespace weathering.Helper.AutocompleteHereHelper
         {   
             List<Item> result = new List<Item>();
             string query = AutocompleteAPIVars.AUTOCOMPLETE_SUGGEST_HEREapi;
-            query = query.Replace("{key}",Consts.HERE_APIKEY);
+            query = query.Replace("{lat}", Consts.DEFAULT_COORDENATE);
+            query = query.Replace("{lang}", Consts.DEFAULT_COORDENATE);
             query = query.Replace("{text}", text);
+            query = query.Replace("{key}", Consts.HERE_APIKEY);
             //Type suggestionsType = typeof(Suggestions);
             await Task.Run(() =>
             {
@@ -29,10 +31,13 @@ namespace weathering.Helper.AutocompleteHereHelper
                             {
                                 foreach (Item item in response.suggestions)
                                 {
-                                    if (item.matchlevel == "city")
-                                    {
-                                        result.Add(item);
-                                    }
+                                    //if (item.localityType != null)
+                                    //{
+                                    //    if (item.localityType == "city")
+                                    //    {
+                                    //        result.Add(item);
+                                    //    }
+                                    //}
                                 }
                             }
 
@@ -64,9 +69,9 @@ namespace weathering.Helper.AutocompleteHereHelper
             }
         }
 
-        public async Task<LookUpByID> GetLocationByID(string loc_ID)
+        public async Task<LookUp> GetLocationByID(string loc_ID)
         {
-            LookUpByID place = new LookUpByID();
+            LookUp place = new LookUp();
             string query = AutocompleteAPIVars.HERE_LOOKUP_BY_ID_API;
             query = query.Replace("{key}", Consts.HERE_APIKEY);
             query = query.Replace("{id}", loc_ID);
@@ -98,11 +103,11 @@ namespace weathering.Helper.AutocompleteHereHelper
             });
             return place;
         }
-        private async void ExecuteQueryGetLocationByID(string query, Func<LookUpByID, bool> success, Func<string, bool> error)
+        private async void ExecuteQueryGetLocationByID(string query, Func<LookUp, bool> success, Func<string, bool> error)
         {
             try
             {
-                success(await ApiConnector.DoQueryAsync<LookUpByID>(query));
+                success(await ApiConnector.DoQueryAsync<LookUp>(query));
             }
             catch (Exception e)
             {

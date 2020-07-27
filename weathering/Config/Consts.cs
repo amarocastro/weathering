@@ -9,5 +9,6 @@ namespace weathering.Config
 	public static class Consts
 	{
 		public const string HERE_APIKEY = "RCbQ1q62PUeNAVkOD3VVsilBDMHmP4zcXkl94oLRU_s";
+		public const string DEFAULT_COORDENATE = "0";
 	}
 }

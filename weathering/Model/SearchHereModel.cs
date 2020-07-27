@@ -14,9 +14,14 @@ namespace weathering.Model
 
 	public class Item
 	{
-		public Address address { get; set; }
-		public string locationId { get; set; }
-		public string matchlevel { get; set; }
+		public string title { get; set; }
+		public string id { get; set; }
+		//public string resultType { get; set; }
+		//public string localityType { get; set; }
+		//public Position position {get; set;}
+		//public Address address { get; set; }
+		//public string locationId { get; set; }
+		//public string matchlevel { get; set; }
 	}
 	public class Address 
 	{
@@ -26,15 +31,16 @@ namespace weathering.Model
 		public string city { get; set; }
 	}
 
-	public class LookUpByID
+	public class LookUp
 	{
+		public string id { get; set; }
 		public AddressLookUp address { get; set; }
 		public Position position { get; set; }
 	}
 	public class Position
 	{
-		public decimal lat { get; set; }
-		public decimal lng { get; set; }
+		public string lat { get; set; }
+		public string lng { get; set; }
 	}
 
 	public class AddressLookUp

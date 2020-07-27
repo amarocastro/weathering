@@ -30,7 +30,7 @@
 									CornerRadius="4"
 									Background="{ThemeResource AutoSuggestListItemBackground}"
 								x:Name="SuggestionItem"
-								Tag="{Binding locationId}">
+								Tag="{Binding id}">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="Auto"/>
 								<ColumnDefinition Width="*" />
@@ -38,7 +38,7 @@
 							</Grid.ColumnDefinitions>
 
 							<Button x:Name="btn_AddFavItem"
-									Tag="{Binding locationId}"
+									Tag="{Binding id}"
 									Click="btn_DeleteBTN_Click"
 									Grid.Column="0" VerticalAlignment="Center"
 									Margin="16,0,8,0"
@@ -48,8 +48,9 @@
 							</Button>
 							<StackPanel Grid.Column="1"
 										Margin="8,0,0,0">
-								<TextBlock Text="{Binding address.city}" Margin="0"/>
-								<TextBlock Text="{Binding address.state}" Margin="0" FontSize="12"/>
+								<TextBlock Text="{Binding title}" Margin="0"/>
+								<!--<TextBlock Text="{Binding address.state}" Margin="0" FontSize="12"/>
+								<TextBlock Text="{Binding address.country}" Margin="0" FontSize="12"/>-->
 							</StackPanel>
 						</Grid>
 					</Border>

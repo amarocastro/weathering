@@ -24,7 +24,7 @@ namespace weathering.Views
 	/// </summary>
 	public sealed partial class FavouritePage : Page
 	{
-		private List<Item> favourites;
+		private List<LookUp> favourites;
 		public FavouritePage()
 		{
 			this.InitializeComponent();
@@ -33,7 +33,7 @@ namespace weathering.Views
 
 		private async void OpenFavList()
 		{
-			List<Item> items = await DataAccess.GetFavList();
+			List<LookUp> items = await DataAccess.GetFavList();
 			this.favourites = items;
 			FavouriteList.ItemsSource = this.favourites;
 		}
@@ -42,7 +42,7 @@ namespace weathering.Views
 		{
 			Button s = (Button)sender;
 			string btn_tag = s.Tag.ToString();
-			Item item = this.favourites.Find(x => x.locationId == btn_tag);
+			LookUp item = this.favourites.Find(x => x.id == btn_tag);
 			await DataAccess.DeleteFromList(item);
 			OpenFavList();
 		}

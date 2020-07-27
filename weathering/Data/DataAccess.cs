@@ -24,6 +24,7 @@ namespace weathering.Data
 
 		public static async void InitializeFile()
 		{
+			
 			bool exists = await localFolder.FileExistsAsync(fileNameFav);
 
 			if (exists)
@@ -36,21 +37,21 @@ namespace weathering.Data
 			}
 		}
 
-		public static async Task<List<Item>> GetFavList()
+		public static async Task<List<LookUp>> GetFavList()
 		{
-			List<Item> result = new List<Item>();
-			result = await ReadJsonFIleFromLocalFolder<List<Item>>(fileNameFav);
+			List<LookUp> result = new List<LookUp>();
+			result = await ReadJsonFIleFromLocalFolder<List<LookUp>>(fileNameFav);
 			return result;
 		}
 
-		public static async Task<bool> AddItemToFav(Item newitem)
+		public static async Task<bool> AddItemToFav(LookUp newitem)
 		{
 			var result = true;
-			result = await WriteJsonFileFromLocalFolfer<Item>(fileNameFav, newitem);
+			result = await WriteJsonFileFromLocalFolfer<LookUp>(fileNameFav, newitem);
 			return result;
 		}
 
-		public static async Task<bool> DeleteFromList(Item item)
+		public static async Task<bool> DeleteFromList(LookUp item)
 		{
 			return await DeleteItemFromFavList(fileNameFav, item);
 		}
@@ -83,14 +84,14 @@ namespace weathering.Data
 			return true;
 		}
 
-		private static async Task<bool> DeleteItemFromFavList(string filename, Item item)
+		private static async Task<bool> DeleteItemFromFavList(string filename, LookUp item)
 		{
 			StorageFile file = await localFolder.GetFileAsync(filename);
 			string content = await FileIO.ReadTextAsync(file);
-			List<Item> contentData = JsonConvert.DeserializeObject<List<Item>>(content);
+			List<LookUp> contentData = JsonConvert.DeserializeObject<List<LookUp>>(content);
 			if (content != null)
 			{
-				contentData.RemoveAt(contentData.FindIndex(x => x.locationId == item.locationId));
+				contentData.RemoveAt(contentData.FindIndex(x => x.id == item.id));
 			}
 			content = JsonConvert.SerializeObject(contentData);
 			await FileIO.WriteTextAsync(file, content);
