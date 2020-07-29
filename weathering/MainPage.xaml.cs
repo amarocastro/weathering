@@ -6,6 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using weathering.Data;
+using weathering.Helper.AutocompleteHereHelper;
+using weathering.Model;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -30,6 +32,8 @@ namespace weathering
     public sealed partial class MainPage : Page
     {
         private NavigationViewItem _lastitem;
+        private AutocompleteHelper autocompleteHelper = new AutocompleteHelper();
+        public List<SimpleItem> suggestions = new List<SimpleItem>();
 
         public MainPage()
         {
@@ -83,6 +87,34 @@ namespace weathering
             }
             ContentFrame.Navigate(view, null, new EntranceNavigationTransitionInfo()); //abrir página
             return true;
+        }
+
+        public async void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                if (sender.Text.Length >= 2)
+                {
+                    //Set the ItemsSource to be your filtered dataset
+                    //sender.ItemsSource = dataset;
+                    suggestions = await this.autocompleteHelper.GetSuggestions(sender.Text);
+
+                    SearchPlace.ItemsSource = suggestions;
+                }
+            }
+        }
+        public void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+
+        }
+        private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            // Set sender.Text. You can use args.SelectedItem to build your text string.
+        }
+
+        private void SuggestList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

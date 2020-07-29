@@ -28,7 +28,7 @@ namespace weathering.Views
 	public sealed partial class SearchPage : Page
 	{
 		private AutocompleteHelper autocompleteHelper = new AutocompleteHelper();
-		public List<Item> suggestions = new List<Item>();
+		public List<SimpleItem> suggestions = new List<SimpleItem>();
 		public SearchPage()
 		{
 			this.InitializeComponent();
@@ -64,7 +64,8 @@ namespace weathering.Views
 		{
 			Button s = (Button)sender;
 			string btn_tag = s.Tag.ToString();
-			Item item = this.suggestions.Find(x => x.id == btn_tag);
+			//Item item = this.suggestions.Find(x => x.id == btn_tag);
+			Item item = new Item();
 			this.AddToFavs(item.id);
 		}
 		private async void AddToFavs(string loc_ID)

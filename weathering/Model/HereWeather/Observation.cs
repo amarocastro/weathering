@@ -7,7 +7,7 @@ using weathering.Model;
 
 namespace weathering.Model.HereWeather
 {
-	public class Observation : CurrentWeatherInterface
+	public class Observation : CurrentWeatherMask, CurrentWeatherInterface
 	{
 		public Obser observation { get; set; }
 		public DateTime feedCreation { get; set; }

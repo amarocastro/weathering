@@ -7,18 +7,34 @@ using System.Threading.Tasks;
 
 namespace weathering.Model
 {
+	public class SimpleItem
+	{
+		public string title { get; set; }
+		public string subtitle { get; set; }
+		public string id { get; set; }
+		public Position position { get; set; }
+
+		public SimpleItem(string title, string subtitle, string id, Position position)
+		{
+			this.title = title;
+			this.subtitle = subtitle;
+			this.id = id;
+			this.position = position;
+		}
+	}
+
 	public class Suggestions
 	{
-		public List<Item> suggestions { get; set; }
+		public List<Item> items { get; set; }
 	}
 
 	public class Item
 	{
 		public string title { get; set; }
 		public string id { get; set; }
-		//public string resultType { get; set; }
-		//public string localityType { get; set; }
-		//public Position position {get; set;}
+		public string resultType { get; set; }
+		public string localityType { get; set; }
+		public Position position { get; set; }
 		//public Address address { get; set; }
 		//public string locationId { get; set; }
 		//public string matchlevel { get; set; }
