@@ -6,22 +6,40 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="Transparent">
+	xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+	<Page.Resources>
+		<DataTemplate x:Key="FavouriteTemplate">
+			<Grid
+				Width="284" Height="112">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<TextBlock Grid.Row="0" Text="{Binding address.city}"/>
+			</Grid>
+		</DataTemplate>
+	</Page.Resources>
     <Grid>
-		<Grid.Resources>
+		<!--<Grid.Resources>
 			<ResourceDictionary>
 				<ResourceDictionary.MergedDictionaries>
 					<ResourceDictionary Source="/Resources/Colors.xaml" />
 					<ResourceDictionary Source="/Resources/ElementsStyle.xaml" />
 				</ResourceDictionary.MergedDictionaries>
 			</ResourceDictionary>
-		</Grid.Resources>
-			<Grid.RowDefinitions>
+		</Grid.Resources>-->
+		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-		
-		<ListView x:Name="FavouriteList">
+		<controls:AdaptiveGridView Name="FavouriteAdaptativeGrid" 
+								    ItemHeight="112"
+                                   DesiredWidth="284"
+								   ItemTemplate="{StaticResource FavouriteTemplate}"/>
+
+
+		<!--<ListView x:Name="FavouriteList">
 			<ListView.ItemTemplate>
 				<DataTemplate >
 					<Border BorderThickness="0">
@@ -49,14 +67,15 @@
 							<StackPanel Grid.Column="1"
 										Margin="8,0,0,0">
 								<TextBlock Text="{Binding address.city}" Margin="0"/>
-								<!--<TextBlock Text="{Binding address.state}" Margin="0" FontSize="12"/>
-								<TextBlock Text="{Binding address.country}" Margin="0" FontSize="12"/>-->
+								--><!--<TextBlock Text="{Binding address.state}" Margin="0" FontSize="12"/>
+								<TextBlock Text="{Binding address.country}" Margin="0" FontSize="12"/>--><!--
 							</StackPanel>
 						</Grid>
 					</Border>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 			
-		</ListView>
+		</ListView>-->
+		
     </Grid>
 </Page>

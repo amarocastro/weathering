@@ -22,6 +22,10 @@
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
-	
+
+		<StackPanel HorizontalAlignment="Center" Grid.Row="0">
+			<TextBlock Text="{Binding currentTemp}" FontSize="48"/>
+		</StackPanel>
+		
 	</Grid>
 </Page>

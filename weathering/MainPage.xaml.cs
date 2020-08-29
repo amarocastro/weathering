@@ -74,18 +74,25 @@ namespace weathering
             {
                 return;
             }
+            
             var clickedView = item.Tag?.ToString() ?? "ContentSettingsView";
-            if (!(NavigateToView(clickedView))) return;
+            if (args.IsSettingsInvoked)
+            {
+                clickedView = "SettingsPage";
+            }
+            if (!(NavigateToView(clickedView, args))) return;
             _lastitem = item;
         }
-        private bool NavigateToView(string clickedView)
+        private bool NavigateToView(string clickedView, NavigationViewItemInvokedEventArgs args)
         {
             var view = Assembly.GetExecutingAssembly().GetType($"weathering.Views.{clickedView}");
+            FrameNavigationOptions navigationOptions = new FrameNavigationOptions();
+            navigationOptions.TransitionInfoOverride = args.RecommendedNavigationTransitionInfo;
             if (string.IsNullOrWhiteSpace(clickedView) || view == null)
             {
                 return false;
             }
-            ContentFrame.Navigate(view, null, new EntranceNavigationTransitionInfo()); //abrir página
+            ContentFrame.NavigateToType(view, null, navigationOptions); //abrir página
             return true;
         }
 
@@ -110,6 +117,12 @@ namespace weathering
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             // Set sender.Text. You can use args.SelectedItem to build your text string.
+            //Abrir vista de Forecast y cargar los datos
+            var view = Assembly.GetExecutingAssembly().GetType($"weathering.Views.Forecast");
+            if (args.SelectedItem != null) {
+                SimpleItem selected = args.SelectedItem as SimpleItem;
+                ContentFrame.Navigate(view, selected, new EntranceNavigationTransitionInfo());
+            }
         }
 
         private void SuggestList_SelectionChanged(object sender, SelectionChangedEventArgs e)

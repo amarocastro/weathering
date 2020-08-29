@@ -7,51 +7,51 @@ using weathering.Model;
 
 namespace weathering.Model.HereWeather
 {
-	public class Observation : CurrentWeatherMask, CurrentWeatherInterface
+	public class Observation : CurrentWeatherMask
 	{
-		public Obser observation { get; set; }
+		public Obser observations { get; set; }
 		public DateTime feedCreation { get; set; }
 		
 		public bool metreic { get; set; }
 
-		public string getCurrentTemp()
+		public override string getCurrentTemp()
 		{
-			return this.observation.location.First<Info>().observation.First<Result>().temperature.ToString();
+			return this.observations.location.First<Info>().observation.First<Result>().temperature.ToString();
 		}
 
-		public string getDescription()
+		public override string getDescription()
 		{
-			return this.observation.location.First<Info>().observation.First<Result>().description.ToString();
+			return this.observations.location.First<Info>().observation.First<Result>().description.ToString();
 		}
 
-		public string getFeelingTemp()
+		public override string getFeelingTemp()
 		{
 			throw new NotImplementedException();
 		}
 
-		public string getHumidity()
+		public override string getHumidity()
 		{
-			return this.observation.location.First<Info>().observation.First<Result>().humidity.ToString();
+			return this.observations.location.First<Info>().observation.First<Result>().humidity.ToString();
 		}
 
-		public string getPressure()
+		public override string getPressure()
 		{
-			return this.observation.location.First<Info>().observation.First<Result>().barometerPressure.ToString();
+			return this.observations.location.First<Info>().observation.First<Result>().barometerPressure.ToString();
 		}
 
-		public string getRocio()
+		public override string getRocio()
 		{
-			return this.observation.location.First<Info>().observation.First<Result>().dewPoint.ToString();		
+			return this.observations.location.First<Info>().observation.First<Result>().dewPoint.ToString();		
 		}
 
-		public string getVisibility()
+		public override string getVisibility()
 		{
-			return this.observation.location.First<Info>().observation.First<Result>().distance.ToString();
+			return this.observations.location.First<Info>().observation.First<Result>().distance.ToString();
 		}
 
-		public string getWindSpeed()
+		public override string getWindSpeed()
 		{
-			return this.observation.location.First<Info>().observation.First<Result>().windSpeed.ToString();
+			return this.observations.location.First<Info>().observation.First<Result>().windSpeed.ToString();
 		}
 	}
 

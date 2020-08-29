@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8ds1KEPa7gQTGAjw6Yp1cQKDMrE9CRYOgfZjPIW9z8hmoCcjjkAfGhPOK6PK8yhxrwVAnKNEFcBgxTL2NwnJDw==",
+  "dgSpecHash": "PYrLFZzMKYc/Kv2+UlWSo9eclb0GQ/gyawDWa3i5PY9Zwdm72aFj8GRlXxNCdnXp/mrPIFfITJi2Sx4Em/xxlg==",
   "success": true,
   "projectFilePath": "C:\\Users\\amaro\\source\\repos\\weathering\\weathering\\weathering.csproj",
   "expectedPackageFiles": [
@@ -21,6 +21,7 @@
     "C:\\Users\\amaro\\.nuget\\packages\\microsoft.toolkit.uwp.ui\\6.0.0\\microsoft.toolkit.uwp.ui.6.0.0.nupkg.sha512",
     "C:\\Users\\amaro\\.nuget\\packages\\microsoft.toolkit.uwp.ui.animations\\6.0.0\\microsoft.toolkit.uwp.ui.animations.6.0.0.nupkg.sha512",
     "C:\\Users\\amaro\\.nuget\\packages\\microsoft.toolkit.uwp.ui.controls\\6.0.0\\microsoft.toolkit.uwp.ui.controls.6.0.0.nupkg.sha512",
+    "C:\\Users\\amaro\\.nuget\\packages\\microsoft.ui.xaml\\2.4.3\\microsoft.ui.xaml.2.4.3.nupkg.sha512",
     "C:\\Users\\amaro\\.nuget\\packages\\microsoft.xaml.behaviors.uwp.managed\\1.1.0\\microsoft.xaml.behaviors.uwp.managed.1.1.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\amaro\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",

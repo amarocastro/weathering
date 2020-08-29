@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace weathering.Model
 {
-	public abstract class CurrentWeatherMask
+	public abstract class CurrentWeatherMask : CurrentWeatherInterface
 	{
+		public abstract string getCurrentTemp();
+		public abstract string getDescription();
+		public abstract string getFeelingTemp();
+		public abstract string getHumidity();
+		public abstract string getPressure();
+		public abstract string getRocio();
+		public abstract string getVisibility();
+		public abstract string getWindSpeed();
 	}
 }
