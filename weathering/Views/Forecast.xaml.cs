@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using weathering.Helper;
 using weathering.Helper.GetForecastHelper;
 using weathering.Model;
-using weathering.Model.HereWeather;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using weathering.ViewModel;
+using System.Threading.Tasks;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,34 +19,39 @@ namespace weathering.Views
 	public sealed partial class Forecast : Page
 	{
 		//private Position position;
-		//private CurrentWeatherMask current_mask;
+		private CurrentWeatherMask currentWeather;
 		private GetForecastHelper getForecastHelper = new GetForecastHelper();
-		private string currentTemp = "";
-		private string currentHumidity = "";
-		private string currentWindSpeed = "";
-		private string currentDescription = "";
+		public ForecastViewModel ViewModel;
 
 		public Forecast()
 		{
 			this.InitializeComponent();
 		}
 		
-		protected override void OnNavigatedTo(NavigationEventArgs e)
+		protected override async void OnNavigatedTo(NavigationEventArgs e)
 		{
 			if (e != null)
 			{
 				SimpleItem item = e.Parameter as SimpleItem;
 				string provider = SettingsManager.GetProviderSetting();
-				this.GetForecastFromPosition(item.position,provider);
+				currentWeather = await this.LoadCurrentWeather(item, provider);
+				ViewModel = new ForecastViewModel(currentWeather);
+				ViewModel.Title = item.title + item.subtitle;
+				PopulateCurrentView();
 			}
 		}
-		private async void GetForecastFromPosition(Position position, string provider)
+		private void PopulateCurrentView()
 		{
-			CurrentWeatherMask currentForecast = await getForecastHelper.GetCurrentForecast(position, provider);
-			currentTemp = currentForecast.getCurrentTemp();
-			currentHumidity = currentForecast.getHumidity();	
-			
+			title.Text = ViewModel.Title;
+			temperature.Text = ViewModel.Temp;
 
 		}
+		private async Task<CurrentWeatherMask> LoadCurrentWeather(SimpleItem item, string provider)
+		{
+			CurrentWeatherMask current = await getForecastHelper.GetCurrentForecast(item.position, provider);
+			return current;
+		}
 	}
+
+
 }

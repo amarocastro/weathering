@@ -12,11 +12,11 @@ namespace weathering.Model.HereWeather
 		public Obser observations { get; set; }
 		public DateTime feedCreation { get; set; }
 		
-		public bool metreic { get; set; }
+		public bool metric { get; set; }
 
 		public override string getCurrentTemp()
 		{
-			return this.observations.location.First<Info>().observation.First<Result>().temperature.ToString();
+			return Math.Truncate(this.observations.location.First<Info>().observation.First<Result>().temperature).ToString();
 		}
 
 		public override string getDescription()
@@ -26,7 +26,7 @@ namespace weathering.Model.HereWeather
 
 		public override string getFeelingTemp()
 		{
-			throw new NotImplementedException();
+			return this.observations.location.First<Info>().observation.First<Result>().comfort.ToString();
 		}
 
 		public override string getHumidity()

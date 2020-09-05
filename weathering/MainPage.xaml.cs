@@ -1,24 +1,9 @@
-﻿using Microsoft.Toolkit.Uwp.UI.Converters;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Reflection;
-using System.Runtime.InteropServices.WindowsRuntime;
 using weathering.Data;
 using weathering.Helper.AutocompleteHereHelper;
 using weathering.Model;
-using Windows.ApplicationModel.Core;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
@@ -42,16 +27,16 @@ namespace weathering
 
             DataAccess.InitializeFile();
         }
-        private void HideTitleBar()
-        {
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.BackgroundColor = Colors.Transparent;
-            titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.InactiveBackgroundColor = Colors.Transparent;
-            CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-            coreTitleBar.ExtendViewIntoTitleBar = true;
-            //Window.Current.SetTitleBar(titleBar);
-        }
+        //private void HideTitleBar()
+        //{
+        //    ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+        //    titleBar.BackgroundColor = Colors.Transparent;
+        //    titleBar.ButtonBackgroundColor = Colors.Transparent;
+        //    titleBar.InactiveBackgroundColor = Colors.Transparent;
+        //    CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+        //    coreTitleBar.ExtendViewIntoTitleBar = true;
+        //    //Window.Current.SetTitleBar(titleBar);
+        //}
         //private void NavigateClick(object sender, ItemClickEventArgs e)
         //{
         //    //StackPanel item = new StackPanel();
@@ -112,17 +97,22 @@ namespace weathering
         }
         public void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
+           
+            //Abrir vista de Forecast y cargar los datos
+            var view = Assembly.GetExecutingAssembly().GetType($"weathering.Views.Forecast");
+            if (args.ChosenSuggestion != null)
+            {
+                SimpleItem selected = args.ChosenSuggestion as SimpleItem;
+                NavMenu.IsPaneOpen = false;
+                sender.Text = string.Empty;
+                ContentFrame.Navigate(view, selected, new EntranceNavigationTransitionInfo());
 
+            }
         }
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             // Set sender.Text. You can use args.SelectedItem to build your text string.
-            //Abrir vista de Forecast y cargar los datos
-            var view = Assembly.GetExecutingAssembly().GetType($"weathering.Views.Forecast");
-            if (args.SelectedItem != null) {
-                SimpleItem selected = args.SelectedItem as SimpleItem;
-                ContentFrame.Navigate(view, selected, new EntranceNavigationTransitionInfo());
-            }
+            
         }
 
         private void SuggestList_SelectionChanged(object sender, SelectionChangedEventArgs e)

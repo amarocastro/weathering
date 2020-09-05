@@ -136,6 +136,8 @@
     <Compile Include="Model\HereWeather\Observation.cs" />
     <Compile Include="Model\SearchHereModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\BindBase.cs" />
+    <Compile Include="ViewModel\ForecastViewModel.cs" />
     <Compile Include="Views\FavouritePage.xaml.cs">
       <DependentUpon>FavouritePage.xaml</DependentUpon>
     </Compile>

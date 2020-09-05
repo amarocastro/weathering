@@ -284,7 +284,7 @@
 				</VisualState>
 			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
-
+		
 		<Grid.Resources>
 			<ResourceDictionary>
 				<ResourceDictionary.MergedDictionaries>
@@ -294,16 +294,20 @@
 				</ResourceDictionary.MergedDictionaries>
 			</ResourceDictionary>
 		</Grid.Resources>
-
-		<NavigationView ItemInvoked="NavigationView_OnItemInvoked"
-						IsBackButtonVisible="Collapsed">
+		
+		<NavigationView x:Name="NavMenu" ItemInvoked="NavigationView_OnItemInvoked"
+						IsBackButtonVisible="Collapsed"
+						IsPaneOpen="False">
+		
 			<NavigationView.AutoSuggestBox>
 				<AutoSuggestBox
 								QueryIcon="Find" Name="SearchPlace" 
 								PlaceholderText="Search Your Place"
 								TextChanged="AutoSuggestBox_TextChanged"
 								QuerySubmitted="AutoSuggestBox_QuerySubmitted"
-								SuggestionChosen="AutoSuggestBox_SuggestionChosen">
+								SuggestionChosen="AutoSuggestBox_SuggestionChosen"
+								UpdateTextOnSelect="False"
+								>
 					<AutoSuggestBox.ItemTemplate>
 						<DataTemplate>
 							<Grid Padding="0,12,0,12" Tag="{Binding id}">
@@ -328,9 +332,21 @@
 				<NavigationViewItem Icon="MapPin" Content="Plan" Tag="LocationPage"/>
 				<NavigationViewItem Icon="List" Content="Favourites" Tag="FavouritePage"/>
 			</NavigationView.MenuItems>
-			<Frame x:Name="ContentFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-					Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">>
-
+			<NavigationView.HeaderTemplate>
+				<DataTemplate>
+					<StackPanel>
+						<CommandBar>
+							<AppBarToggleButton Name="AddFavourite" 
+								   Icon="Favorite"
+								   Label="Add to Favourites"/>
+							<AppBarToggleButton Name="Refresh" 
+								Label="Update"
+								Icon="Refresh"/>
+						</CommandBar>
+					</StackPanel>
+				</DataTemplate>
+			</NavigationView.HeaderTemplate>
+			<Frame x:Name="ContentFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 				<Frame.ContentTransitions>
 					<TransitionCollection>
 						<NavigationThemeTransition/>
