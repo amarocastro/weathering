@@ -8,8 +8,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
-    Background="Transparent">
-
+    Background="Transparent"
+	>
+	<!--<Page.BottomAppBar>
+		<CommandBar ClosedDisplayMode="Compact" IsOpen="False" VerticalAlignment="Bottom">
+			<AppBarButton Name="AddFavourite" 
+								   Icon="Favorite"
+								   Label="Add to Favourites"/>
+			<AppBarButton Name="Refresh" 
+								Label="Update"
+								Icon="Refresh"/>
+		</CommandBar>
+	</Page.BottomAppBar>-->
     <Grid>
 		<!--<Grid.Resources>
 			<ResourceDictionary>
@@ -21,27 +31,44 @@
 		</Grid.Resources>-->
 
 		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" MaxHeight="76"/>
+			<RowDefinition Height="72">
+				
+			</RowDefinition>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
-
-
-
-		<StackPanel Grid.Row="0" Margin="0,24,0,0"
+		
+		<Grid Grid.Row="0" Height="72" Background="{StaticResource CommandBarBackground}">
+			<CommandBar ClosedDisplayMode="Compact"
+					IsOpen="False"
+					VerticalAlignment="Bottom">
+				<AppBarButton Name="ManageFavourite" Click="ManageFavourite_Click"/>
+				<AppBarButton Name="Refresh" 
+								Label="Update"
+								Icon="Refresh"/>
+			</CommandBar>
+		</Grid>
+		<!--<StackPanel Grid.Row="0"
+					VerticalAlignment="Bottom"
+					Height="Auto"
+					Background="Red">
+		
+		</StackPanel>-->
+		<StackPanel Grid.Row="1" 
 					Padding="0"
 					HorizontalAlignment="Center"
 					VerticalAlignment="Center">
 			<TextBlock Name="title" FontSize="24"/>
 		</StackPanel>
-		<StackPanel Grid.Row="1" Margin="0,0,0,6" 
+		<StackPanel Grid.Row="2" Margin="0,0,0,6" 
 					Padding="0"
 					HorizontalAlignment="Center" 
 					VerticalAlignment="Center">
 			<TextBlock Name="temperature" FontSize="96"/>
 		</StackPanel>
-					
+
 	</Grid>
+	
 </Page>

@@ -8,6 +8,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using weathering.ViewModel;
 using System.Threading.Tasks;
+using weathering.Data;
+using Windows.UI.Xaml;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -33,10 +35,12 @@ namespace weathering.Views
 			if (e != null)
 			{
 				SimpleItem item = e.Parameter as SimpleItem;
+				item.isFavourite = await DataAccess.FavExists(item);
 				string provider = SettingsManager.GetProviderSetting();
 				currentWeather = await this.LoadCurrentWeather(item, provider);
 				ViewModel = new ForecastViewModel(currentWeather);
 				ViewModel.Title = item.title + item.subtitle;
+				SetCommandBar(item.isFavourite);
 				PopulateCurrentView();
 			}
 		}
@@ -46,10 +50,27 @@ namespace weathering.Views
 			temperature.Text = ViewModel.Temp;
 
 		}
+
+		private void SetCommandBar(bool isFav)
+		{
+			if (!isFav)
+			{
+				ManageFavourite.Icon = new SymbolIcon(Symbol.UnFavorite);
+			}
+			else
+			{
+				ManageFavourite.Icon = new SymbolIcon(Symbol.Favorite);
+			}
+		}
 		private async Task<CurrentWeatherMask> LoadCurrentWeather(SimpleItem item, string provider)
 		{
 			CurrentWeatherMask current = await getForecastHelper.GetCurrentForecast(item.position, provider);
 			return current;
+		}
+
+		private void ManageFavourite_Click(object sender, RoutedEventArgs e)
+		{
+			
 		}
 	}
 

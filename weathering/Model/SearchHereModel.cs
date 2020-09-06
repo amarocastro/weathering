@@ -9,10 +9,12 @@ namespace weathering.Model
 {
 	public class SimpleItem
 	{
+		public bool isFavourite { get; set; }
 		public string title { get; set; }
 		public string subtitle { get; set; }
 		public string id { get; set; }
 		public Position position { get; set; }
+
 
 		public SimpleItem(string title, string subtitle, string id, Position position)
 		{

@@ -90,23 +90,23 @@ namespace weathering
                     //Set the ItemsSource to be your filtered dataset
                     //sender.ItemsSource = dataset;
                     suggestions = await this.autocompleteHelper.GetSuggestions(sender.Text);
-
                     SearchPlace.ItemsSource = suggestions;
                 }
             }
         }
         public void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-           
             //Abrir vista de Forecast y cargar los datos
             var view = Assembly.GetExecutingAssembly().GetType($"weathering.Views.Forecast");
             if (args.ChosenSuggestion != null)
             {
                 SimpleItem selected = args.ChosenSuggestion as SimpleItem;
+
                 NavMenu.IsPaneOpen = false;
                 sender.Text = string.Empty;
+                suggestions.Clear();
+                SearchPlace.ItemsSource = suggestions;
                 ContentFrame.Navigate(view, selected, new EntranceNavigationTransitionInfo());
-
             }
         }
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)

@@ -37,6 +37,16 @@ namespace weathering.Data
 			}
 		}
 
+		public static async Task<bool> FavExists(SimpleItem item)
+		{
+			bool result = false;
+			if (await GetFavItem(fileNameFav, item) != null)
+			{
+				result = true;
+			}
+			return result;
+		}
+
 		public static async Task<List<LookUp>> GetFavList()
 		{
 			List<LookUp> result = new List<LookUp>();
@@ -55,7 +65,14 @@ namespace weathering.Data
 		{
 			return await DeleteItemFromFavList(fileNameFav, item);
 		}
-		
+		private static async Task<LookUp> GetFavItem(string filename, SimpleItem item)
+		{
+			StorageFile file = await localFolder.GetFileAsync(filename);
+			string content = await FileIO.ReadTextAsync(file);
+			List<LookUp> data = JsonConvert.DeserializeObject<List<LookUp>>(content);
+			LookUp result = data.Find(x => x.id == item.id);
+			return result;
+		}
 		//leer las entradas
 		private static async Task<T> ReadJsonFIleFromLocalFolder<T>(string filename)
 		{
